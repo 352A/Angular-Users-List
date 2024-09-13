@@ -1,0 +1,31 @@
+<div class="container pt-5">
+  <div class="row justify-content-center">
+    @for (user of users; track user.id) {
+    <div class="col-4 mt-4 text-center">
+      <div class="bg-light p-5 rounded-5">
+        <img src="{{ user.image }}" alt="" class="block" />
+        <div
+          class="w-50 mx-auto mt-4 text-white rounded-1 px-3 py-1"
+          [ngClass]="
+            user.role === 'admin'
+              ? 'bg-danger'
+              : user.role === 'moderator'
+              ? 'bg-warning'
+              : 'bg-success'
+          "
+        >
+          {{ user.role }}
+        </div>
+        <ul class="list-unstyled pt-4 text-center">
+          <li>{{ user.firstName }}</li>
+          <li>{{ user.email }}</li>
+          <li>{{ user.phone }}</li>
+          <li>{{ user.birthDate }}</li>
+        </ul>
+      </div>
+    </div>
+    } @empty {
+    <div>No Users</div>
+    }
+  </div>
+</div>
